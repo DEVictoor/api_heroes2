@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useMemo } from "react";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import { getToken } from "./utils/token";
+import AuthContext from "./context/AuthContext";
 
 function App() {
+  const [auth, setAuth] = useState(undefined);
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      setAuth(null);
+    } else {
+      setAuth(token);
+    }
+  }, []);
+
+  const logout = () => {
+    console.log("cerrar sesion");
+  };
+  const setUser = (user) => {
+    setAuth(user);
+  };
+  const authData = useMemo(
+    () => ({
+      auth,
+      logout,
+      setUser,
+    }),
+    [auth]
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={authData}>
+      {!auth ? <Login /> : <Dashboard />}
+    </AuthContext.Provider>
   );
 }
 

@@ -1,0 +1,48 @@
+.box-login {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #111;
+    background-image: linear-gradient(to right top, #0d0a05, #0d0906, #0d0807, #0b0708, #090708, #0a070a, #0b070c, #0a080e, #0d0812, #100814, #140816, #170818);
+    background-image: linear-gradient(to right top, #301b00, #31180f, #2e1719, #27191e, #201a1f, #201921, #1f1924, #1d1927, #21172f, #271336, #2f0c3c, #39003f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-form {
+    width: 400px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, .2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0px 5px 26px 8px rgba(95, 95, 95, 0.1);
+    padding: 40px;
+}
+
+.box-form img {
+    width: 70px;
+    padding-bottom: 20px;
+}
+
+.box-form input {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+.box-form input:focus {
+    outline: none;
+}
+
+.box-form button {
+    padding: 10px;
+    width: 100%;
+    background-color: transparent;
+    border: solid 1px #fff;
+    color: #fff;
+}
