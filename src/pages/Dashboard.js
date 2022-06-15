@@ -7,6 +7,29 @@ import { getToken } from "../utils/token";
 const Dashboard = () => {
   const [windowcreate, setWindowcreate] = useState(false);
 
+// animacion onpress clicked
+const cardclick = (event) => {  
+  if(document.querySelector(".character.active")){
+
+    document.querySelector(".character.active").classList.remove("active");
+  }
+  event.target.parentNode.classList.add("active");
+  // event.target.classList.add("active"); 
+};
+// animacion no view  clicked
+const showcard = (e) => {  
+  if(e.target.localName === 'ul' ) {
+    if(document.querySelector(".character.active")){
+
+      document.querySelector(".character.active").classList.remove("active");
+    }
+
+  }
+  // event.target.classList.add("active"); 
+};
+
+
+
   // heroes
   const [heroesdata, setHeroesdata] = useState("");
 
@@ -42,6 +65,10 @@ const Dashboard = () => {
   const submit_form = async (e) => {
     console.log(getToken());
     e.preventDefault();
+if(datos.name === "" || datos.edad === "" || datos.description === "" ||datos.image === "" ){
+  alert("Te faltan llenar los campos del formulario")
+}else{
+
     var data = JSON.stringify({
       name: datos.name,
       description: datos.description,
@@ -62,11 +89,18 @@ const Dashboard = () => {
     await axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        document.querySelector(".form-register").reset();
+        setDatos({
+          name: "",
+          edad: "",
+          description: "",
+          image: "",
+        });
       })
       .catch(function (error) {
         console.log(error);
       });
-    console.log(datos);
+}
   };
 
   // obtener heroes
@@ -100,12 +134,12 @@ const Dashboard = () => {
           </div>
         </nav>
       </header>
-      <section className="container-carousel">
+      <section onClick={showcard} className="container-carousel">
         <ul className="carousel">
           {heroesdata !== "" ? (
             heroesdata.map((item) => {
               return (
-                <li key={item.name} className="character">
+                <li onClick={cardclick} key={item.name} className="character">
                   <img src={item.image} alt="" />
                   <span>{item.name}</span>
                 </li>

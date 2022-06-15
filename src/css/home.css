@@ -1,4 +1,4 @@
-.box-dashboard {
+body {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -26,10 +26,9 @@ header img {
     height: 50px;
 }
 
-header .btn-add {
+header a {
     color: #ddd;
     text-decoration: none;
-    cursor: pointer;
 }
 
 header span {
@@ -39,11 +38,9 @@ header span {
 }
 
 .container-carousel {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 120px;
+    position: absolute;
+    left: 0;
+    transition: all ease .5s;
 }
 
 footer {
@@ -58,10 +55,15 @@ footer {
 
 .carousel {
     display: flex;
-    max-width: 1024px;
-    height: max-content;
+    padding: 0 180px;
+    padding-right: 1400px;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100vw;
+    height: 89vh;
     overflow: auto;
     align-items: center;
+    /* background-color: aqua; */
 }
 
 .character {
@@ -77,32 +79,15 @@ footer {
     cursor: pointer;
     opacity: .7;
     transition: all ease .5s;
+    
+    transform: skewX(-7deg);
 }
 
-.character:before {
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    /* background-color: aqua; */
-    background-image: url('../images/bg-item.jpg');
-    background-size: cover;
-    filter: sepia(.5);
-    transform: skewX(-7deg);
-    z-index: -1;
-    box-shadow: 0px 5px 26px 8px rgba(0, 0, 0, .5);
-    transition: all ease .5s;
-}
+
 
 .character.active {
-    min-width: 400px;
-    max-width: 400px;
-    height: 800px;
-    z-index: 100;
-    opacity: 1;
-    transition: all ease .5s;
+    transform: scale(1.2) skewX(-7deg);
+    margin: 0px 80px;
 }
 
 .character.back {
@@ -110,14 +95,11 @@ footer {
     transition: all ease .5s;
 }
 
-.character.active:before {
-    filter: sepia(0);
-    transition: all ease .5s;
-}
 
 .character img {
     height: calc(0.75 * 800px);
-    clip-path: polygon(112px 0, 412px 0, 339px 100%, 38px 100%);
+    width: 100%;
+    object-fit: cover;
     filter: sepia(.7);
     transition: all ease .5s;
 }
@@ -137,23 +119,23 @@ footer {
 .character span {
     position: absolute;
     bottom: 0;
-    left: -33px;
+    left: 0px;
+    right: 0px;
     display: block;
     padding: 5px 0;
     text-align: center;
     width: 100%;
     font-size: 36px;
     background-color: #fff;
-    transform: skewX(-7deg);
     opacity: 1;
     transition: opacity ease .5s;
 }
 
-.character.active span {
+/* .character.active span {
     left: -45px;
     opacity: 0;
     transition: all ease .2s;
-}
+} */
 
 .character button {
     position: absolute;
@@ -289,13 +271,9 @@ footer {
     transform: none;
 }
 
-.buttons .btn-register {
+.buttons button:first-child {
     background-color: rgb(3, 80, 151);
     border: solid 1px rgb(3, 80, 151);
-}
-.buttons .btn-close {
-    background: #ececec;
-    color: #000;
 }
 
 .buttons button:last-child {
