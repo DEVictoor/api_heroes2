@@ -43,12 +43,19 @@ const Login = () => {
       data: data,
     };
 
-    const response = await axios(config);
-    setToken(response.data.token);
+    await axios(config)
+    .then(function (response) {
+      setToken(response.data.token);
     setUser(response.data.token);
+    })
+    .catch(function (error) {
+      if(error.response.data.message[0] === "El usuario no existe") {
+        setErrorlogin(true)}
+    });
+    
     // setLogueado(response.data.token);
   };
-
+const [errorlogin, setErrorlogin] = useState(false)
   return (
     <div className="box-login">
       <section className="box-form">
@@ -65,6 +72,8 @@ const Login = () => {
           placeholder="Password"
           onChange={handleInputChange}
         />
+        
+        {errorlogin ? <p className="errorlogin">El usuario no existe</p> : null}
         <button onClick={loguearse}>Log in</button>
       </section>
     </div>

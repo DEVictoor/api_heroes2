@@ -26,9 +26,10 @@ header img {
     height: 50px;
 }
 
-header a {
+header .btn-add {
     color: #ddd;
     text-decoration: none;
+    cursor: pointer;
 }
 
 header span {
@@ -37,10 +38,12 @@ header span {
     border-left: solid 1px #222;
 }
 
-section {
-    position: absolute;
-    left: 0;
-    transition: all ease .5s;
+.container-carousel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 120px;
 }
 
 footer {
@@ -55,10 +58,8 @@ footer {
 
 .carousel {
     display: flex;
-    padding: 0 180px;
-    padding-right: 1400px;
     max-width: 1024px;
-    height: 89vh;
+    height: max-content;
     overflow: auto;
     align-items: center;
 }

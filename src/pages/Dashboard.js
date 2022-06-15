@@ -6,10 +6,6 @@ import { getToken } from "../utils/token";
 // import "../animaciones/animacionhome";
 const Dashboard = () => {
   const [windowcreate, setWindowcreate] = useState(false);
-  // const [name, setName] = useState("");
-  // const [edad, setEdad] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [imagen, setImagen] = useState("");
 
   // heroes
   const [heroesdata, setHeroesdata] = useState("");
@@ -31,7 +27,6 @@ const Dashboard = () => {
   const show_modal_create = (e) => {
     e.preventDefault();
     setWindowcreate(!windowcreate);
-    console.log(datos);
   };
   const cancel_register = (e) => {
     e.preventDefault();
@@ -100,17 +95,17 @@ const Dashboard = () => {
       <header>
         <img src="./logo.svg" alt="" />
         <nav>
-          <a href="#" id="newAvenger" onClick={show_modal_create}>
+          <div className="btn-add" id="newAvenger" onClick={show_modal_create}>
             <span>+ NEW AVENGER</span>
-          </a>
+          </div>
         </nav>
       </header>
-      <section>
+      <section className="container-carousel">
         <ul className="carousel">
           {heroesdata !== "" ? (
             heroesdata.map((item) => {
               return (
-                <li className="character">
+                <li key={item.name} className="character">
                   <img src={item.image} alt="" />
                   <span>{item.name}</span>
                 </li>
@@ -127,7 +122,7 @@ const Dashboard = () => {
           <h2>Register new Avenger</h2>
           <form className="form-register" onSubmit={submit_form}>
             <p>
-              <label for="name">Name</label>
+              <label htmlFor="name">Name</label>
               <input
                 name="name"
                 onChange={handleChange}
@@ -136,7 +131,7 @@ const Dashboard = () => {
               />
             </p>
             <p>
-              <label for="datebirth">edad</label>
+              <label htmlFor="datebirth">edad</label>
               <input
                 name="edad"
                 onChange={handleChange}
@@ -145,7 +140,7 @@ const Dashboard = () => {
               />
             </p>
             <p>
-              <label for="descripcion">Descripcion</label>
+              <label htmlFor="descripcion">Descripcion</label>
               <input
                 name="description"
                 onChange={handleChange}
@@ -154,7 +149,7 @@ const Dashboard = () => {
               />
             </p>
             <p>
-              <label for="linkimagen">Link imagen</label>
+              <label htmlFor="linkimagen">Link imagen</label>
               <input
                 name="image"
                 onChange={handleChange}

@@ -46,3 +46,10 @@
     border: solid 1px #fff;
     color: #fff;
 }
+.errorlogin{
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: rgba(235, 69, 69, 0.103);
+    border: 1px solid rgb(143, 5, 5);
+    color: rgb(219, 96, 96);
+}
