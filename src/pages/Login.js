@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { setToken } from "../utils/token";
 import useAuth from "../hoooks/useAuth";
+import logo from '../assets/logo.svg';
 
 // import Global from "../configapi/Global";
 import "../css/main.css";
 import "../css/login.css";
 
 const Login = () => {
-  let logo =
-    "https://w7.pngwing.com/pngs/861/252/png-transparent-carol-danvers-iron-man-ultron-hulk-marvel-comics-avengers-logo-marvel-avengers-logo-marvel-avengers-assemble-avengers-text.png";
-
   // const auth = useAuth();
   const { setUser } = useAuth();
 
@@ -44,18 +42,19 @@ const Login = () => {
     };
 
     await axios(config)
-    .then(function (response) {
-      setToken(response.data.token);
-    setUser(response.data.token);
-    })
-    .catch(function (error) {
-      if(error.response.data.message[0] === "El usuario no existe") {
-        setErrorlogin(true)}
-    });
-    
+      .then(function (response) {
+        setToken(response.data.token);
+        setUser(response.data.token);
+      })
+      .catch(function (error) {
+        if (error.response.data.message[0] === "El usuario no existe") {
+          setErrorlogin(true)
+        }
+      });
+
     // setLogueado(response.data.token);
   };
-const [errorlogin, setErrorlogin] = useState(false)
+  const [errorlogin, setErrorlogin] = useState(false)
   return (
     <div className="box-login">
       <section className="box-form">
@@ -72,7 +71,7 @@ const [errorlogin, setErrorlogin] = useState(false)
           placeholder="Password"
           onChange={handleInputChange}
         />
-        
+
         {errorlogin ? <p className="errorlogin">El usuario no existe</p> : null}
         <button onClick={loguearse}>Log in</button>
       </section>
